@@ -3,8 +3,9 @@
 
 float pila[8];
 
-void printStack(void)
+void printStack(void) //Método para imprimir la pila
 {
+    printf("--------CALCULADORA RPN----------\n");
     for (int i = 0; i < 8; i++)
     {
         printf("%d", 8 - i);
@@ -15,7 +16,7 @@ void printStack(void)
     printf("\n");
 }
 
-void moveStackUp(void)
+void moveStackUp(void)//Método para mover hacia arriba una posición en la pila 
 {
     for (int i = 1; i < 8; i++)
     {
@@ -23,7 +24,7 @@ void moveStackUp(void)
     }
 }
 
-void moveStackDown(void)
+void moveStackDown(void)//Método para mover hacia abajo una posición en la pila
 {
     for (int i = 7; i > 0; i--)
     {
@@ -31,7 +32,7 @@ void moveStackDown(void)
     }
 }
 
-void clean(void)
+void clean(void)//Poner todos los valores de la pila en cero
 {
     for (int i = 0; i < 8; i++)
     {
@@ -44,23 +45,21 @@ int main(void)
     int i, op;
     float res = 0, num = 0;
 
-    clean();
+    clean();//Inicializamos la pila
 
     do
     {
-        printf("\033[2J\033[1;1H");
-        printf("--------CALCULADORA RPN----------\n");
-        printStack();
+        printf("\033[2J\033[1;1H");//Para borrar la pantalla en la ejecución
+        printStack();//Imprimimos pila
         printf("\n");
-        printf("1. Ingresar número\n2. Seleccionar operador\n3. Limpiar último\n4. Limpiar todo\n5. Salir\n");
+        printf("1. Ingresar número\n2. Seleccionar operador\n3. Limpiar último\n4. Limpiar todo\n5. Salir\n");//Selección de opciones
         printf("Ingrese el número de opción: ");
         scanf("%d", &op);
-        if (op == 1)
+        if (op == 1)//Ingresar número
         {
-            if (pila[0] == 0)
+            if (pila[0] == 0)//Verificamos que la última posición esté vacía, o sea que todavía hay espacio
             {
                 printf("\033[2J\033[1;1H");
-                printf("--------CALCULADORA RPN----------\n");
                 printStack();
                 printf("Ingrese el número: ");
                 num = 0;
@@ -73,7 +72,7 @@ int main(void)
                 printf("La pila está llena\n");
             }
         }
-        else if (op == 2)
+        else if (op == 2)//Seleccionar operador
         {
             printf("\033[2J\033[1;1H");
             char operador;
@@ -110,7 +109,7 @@ int main(void)
                 printf("\n\n");
                 break;
             case '/':
-                if (pila[7] == 0)
+                if (pila[7] == 0)//Controlamos división por cero
                 {
                     printf("\n");
                     printf("Math Error\n");
