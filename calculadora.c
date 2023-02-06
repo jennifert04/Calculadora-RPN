@@ -49,7 +49,6 @@ int main(void)
 
     do
     {
-        //printf("\033[2J\033[1;1H"); // Para borrar la pantalla en la ejecución
         printStack();               // Imprimimos pila
         printf("\n");
         printf("1. Ingresar número\n2. Seleccionar operador\n3. Limpiar último\n4. Limpiar todo\n5. Salir\n"); // Selección de opciones
@@ -168,7 +167,6 @@ int main(void)
                 }
                 else
                 {
-
                     gra = pi*(pila[7])/180;
                     res = tan(gra);
                     pila[7] = res;
