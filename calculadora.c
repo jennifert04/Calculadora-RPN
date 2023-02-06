@@ -43,17 +43,17 @@ void clean(void) // Poner todos los valores de la pila en cero
 int main(void)
 {
     int i, op;
-    float res = 0, num = 0, pi = 3.14159265359;
+    float res = 0, num = 0, pi = 3.14159265359, gra;
 
     clean(); // Inicializamos la pila
 
     do
     {
-        printf("\033[2J\033[1;1H"); // Para borrar la pantalla en la ejecución
+        //printf("\033[2J\033[1;1H"); // Para borrar la pantalla en la ejecución
         printStack();               // Imprimimos pila
         printf("\n");
         printf("1. Ingresar número\n2. Seleccionar operador\n3. Limpiar último\n4. Limpiar todo\n5. Salir\n"); // Selección de opciones
-        printf("Ingrese el número de opción: ");
+        printf("Ingrese el número de opción: \n");
         scanf("%d", &op);
 
         if (op == 1) // Ingresar número
@@ -135,7 +135,6 @@ int main(void)
             case 'r':
                 if (pila[7] < 0)//Controlamos raíces cuadradas de números negativos
                 {
-                    printf("\n");
                     printf("Math Error\n");
                     break;
                 }
@@ -147,15 +146,16 @@ int main(void)
                 }
                 break;
             case 's':
-                float gra;
-                gra = pi*(pila[7])/180;
+                
+                gra = pi*(pila[7])/180; //Conversión de radianes a grados
                 res = sin(gra);
                 pila[7] = res;
                 printf("\n\n");
                 break;
 
             case 'c':
-                res = cos(pila[7]);
+                gra = pi*(pila[7])/180;
+                res = cos(gra);
                 pila[7] = res;
                 printf("\n\n");
                 break;
@@ -169,13 +169,14 @@ int main(void)
                 else
                 {
 
-                    res = tan(pila[7]);
+                    gra = pi*(pila[7])/180;
+                    res = tan(gra);
                     pila[7] = res;
                     printf("\n\n");
                     break;
                 }
             default:
-                printf("La opción ingresada no es válida.");
+                printf("La opción ingresada no es válida.\n");
             }
         }
         else if (op == 3)
